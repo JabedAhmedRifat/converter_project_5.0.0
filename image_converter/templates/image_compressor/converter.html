@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Compressor</title>
+</head>
+<body>
+    <h2>Image Compressor</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="original_image" required>
+        
+        <label for="output_format">Choose output format:</label>
+        <select id="output_format" name="output_format" required>
+            <option value="jpeg">JPEG</option>
+            <option value="png">PNG</option>
+            <option value="svg">SVG</option>
+        </select>
+
+        <button type="submit">Compress Image</button>
+    </form>
+
+    {% if download_link %}
+        <p>Your compressed image is ready for download. Click the link below:</p>
+        <a href="{{ download_link }}" download>Download Compressed Image</a>
+    {% endif %}
+</body>
+</html>

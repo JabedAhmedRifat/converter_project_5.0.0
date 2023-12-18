@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Archive Converter</title>
+</head>
+<body>
+    <h2>Archive Converter</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="original_folder" required>
+        
+        <label for="archive_format">Select Format:</label>
+        <select name="archive_format" id="archive_format">
+            <option value="zip">ZIP</option>
+            <option value="7z">7Z</option>
+            <option value="tar">TAR</option>
+            <option value="tar.bz2">TAR.BZ2</option>
+            <option value="tar.gz">TAR.GZ</option>
+            <!-- Add more format options as needed -->
+        </select>
+        
+        <button type="submit">Convert Archive</button>
+    </form>
+
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Converter</title>
+</head>
+<body>
+    <h2>Image Converter</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="original_image" accept="image/*" required>
+        
+        <label for="image_format">Select Format:</label>
+        <select name="image_format" id="image_format">
+            <option value="bmp">BMP</option>
+            <option value="eps">EPS</option>
+            <option value="gif">GIF</option>
+            <option value="ico">ICO</option>
+            <option value="jpg">JPG</option>
+            <option value="png">PNG</option>
+            <option value="svg">SVG</option>
+            <option value="tga">TGA</option>
+            <option value="tiff">TIFF</option>
+            <option value="wbmp">WBMP</option>
+            <option value="webp">WEBP</option>
+        </select>
+        
+        <button type="submit">Convert Image</button>
+    </form>
+
+    <h3>Conversion History</h3>
+    <ul>
+        {% for conversion in conversions %}
+            <li>
+                {{ conversion }} - {% if conversion.conversion_status %}Converted{% else %}Pending{% endif %}
+                {% if conversion.converted_image %}
+                    <a href="{{ conversion.converted_image.url }}" target="_blank">View</a> |
+                    <a href="{% url 'download_image' conversion.id %}" download>Download</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BMP Converter Result</title>
+</head>
+<body>
+    <h2>Conversion Result</h2>
+    
+    {% if download_link %}
+        <p><a href="{{ download_link }}" target="_blank">{{ download_link }}</a></p>
+    {% else %}
+        <p>No download link available.</p>
+    {% endif %}
+
+    <p><a href="{% url 'bmp_converter' %}">Back to Converter</a></p>
+</body>
+</html>

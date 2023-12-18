@@ -1,0 +1,33 @@
+# aspose-words
+beautifulsoup4
+bs4
+Django
+docx2pdf
+docx2txt
+ffmpeg-python
+fonttools
+fpdf
+html2text
+html5lib
+imageio
+imageio-ffmpeg
+odfpy
+opencv-python
+openpyxl
+pdf2docx
+pdf2pptx
+# pdf2xlsx
+Pillow
+pydub
+pydyf
+pypandoc
+PyPDF2
+python-docx
+python-pptx
+pyvips
+reportlab
+requests
+Wand
+weasyprint
+
+XlsxWriter

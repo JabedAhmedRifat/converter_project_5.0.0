@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PDF Compression Result</title>
+</head>
+<body>
+    <h1>PDF Compression Result</h1>
+    
+    {% if download_link %}
+        <p>Your compressed PDF is ready for download. Click the link below:</p>
+        <a href="{{ download_link }}" download>Download Compressed PDF</a>
+    {% else %}
+        <p>There was an error during PDF compression. Please try again.</p>
+    {% endif %}
+
+    <p><a href="{% url 'pdf_compressor' %}">Back to Converter</a></p>
+</body>
+</html>

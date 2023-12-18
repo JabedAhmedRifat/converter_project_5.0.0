@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Audio Converter</title>
+</head>
+<body>
+    <h2>Audio Converter</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="original_audio" accept="audio/*" required>
+        
+        <label for="audio_format">Select Format:</label>
+        <select name="audio_format" id="audio_format">
+            <option value="mp3">MP3</option>
+            <option value="wav">WAV</option>
+            <option value="ogg">OGG</option>
+            <option value="flac">FLAC</option>
+            <option value="aac">AAC</option>
+            <option value="m4a">M4A</option>
+            <option value="opus">OPUS</option>
+            <option value="wma">WMA</option>
+            <!-- Add more options as needed -->
+        </select>
+        
+        <button type="submit">Convert Audio</button>
+    </form>
+
+    <h3>Conversion History</h3>
+    <ul>
+        {% for conversion in conversions %}
+            <li>
+                {{ conversion }} - {% if conversion.conversion_status %}Converted{% else %}Pending{% endif %}
+                {% if conversion.converted_audio %}
+                    <a href="{{ conversion.converted_audio.url }}" target="_blank">View</a> |
+                    <a href="{% url 'download_audio' conversion.id %}" download>Download</a>
+
+                    <!-- Add an audio player for each converted audio -->
+                    <audio controls>
+                        <source src="{{ conversion.converted_audio.url }}" type="{{ conversion.converted_audio.content_type }}">
+                        Your browser does not support the audio element.
+                    </audio>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PDF Converter</title>
+</head>
+<body>
+    <h2>PDF Converter</h2>
+    <form method="post" action="{% url 'pdf_converter' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="pdf_file" required>
+        
+        <label for="image_format">Select Image Format:</label>
+        <select name="image_format" id="image_format">
+            <option value="png">PNG</option>
+            <option value="jpeg">JPEG</option>
+            <!-- Add more format options as needed -->
+        </select>
+        
+        <button type="submit">Convert to Images</button>
+    </form>
+</body>
+</html>

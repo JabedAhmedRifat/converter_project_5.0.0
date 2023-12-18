@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PDF Compressor</title>
+</head>
+<body>
+    <h2>PDF Compressor</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="original_pdf" required>
+        
+        <button type="submit">Compress PDF</button>
+    </form>
+
+    {% if download_link %}
+        <p>Your compressed PDF is ready for download. Click the link below:</p>
+        <a href="{{ download_link }}" download>Download Compressed PDF</a>
+    {% endif %}
+</body>
+</html>
