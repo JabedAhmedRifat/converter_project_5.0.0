@@ -66,3 +66,4 @@ def video_result_page(request):
     download_link = request.session.pop('download_link', None)
 
     return render(request, 'video_converter/result_page.html', {'download_link': download_link})
+
