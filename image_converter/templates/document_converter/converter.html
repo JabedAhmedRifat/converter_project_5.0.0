@@ -6,13 +6,12 @@
 </head>
 <body>
     <h2>Document Converter</h2>
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" action="{% url 'document_converter' %}" enctype="multipart/form-data">
         {% csrf_token %}
-        <input type="file" name="original_document" accept=".docx, .html, .odt, .pdf, .ppt, .pptx, .rtf, .txt, .xlsx" required>
+        <input type="file" name="original_file" required>
         
-        <label for="document_format">Select Format:</label>
-        <select name="document_format" id="document_format">
-            <option value="docx">DOCX</option>
+        <label for="output_format">Select Format:</label>
+        <select name="output_format" id="output_format">
             <option value="html">HTML</option>
             <option value="odt">ODT</option>
             <option value="pdf">PDF</option>
@@ -20,23 +19,11 @@
             <option value="rtf">RTF</option>
             <option value="txt">TXT</option>
             <option value="xlsx">XLSX</option>
+            <option value="docx">DOCX</option>
             <!-- Add more format options as needed -->
         </select>
         
         <button type="submit">Convert Document</button>
     </form>
-
-    <h3>Conversion History</h3>
-    <ul>
-        {% for conversion in conversions %}
-            <li>
-                {{ conversion }} - {% if conversion.conversion_status %}Converted{% else %}Pending{% endif %}
-                {% if conversion.converted_document %}
-                    <a href="{{ conversion.converted_document.url }}" target="_blank">View</a> |
-                    <a href="{% url 'download_document' conversion.id %}" download>Download</a>
-                {% endif %}
-            </li>
-        {% endfor %}
-    </ul>
 </body>
 </html>

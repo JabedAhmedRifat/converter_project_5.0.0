@@ -43,7 +43,7 @@ def bmp_converter(request):
                 request.session['download_link'] = download_link
 
                 # Render the template with the converted file link
-                return redirect('result_page')
+                return redirect('bmp_result_page')
 
             except Exception as e:
                 print(f"Error during image conversion: {e}")

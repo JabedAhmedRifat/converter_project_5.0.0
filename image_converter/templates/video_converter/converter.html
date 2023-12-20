@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Video Converter</title>
+</head>
+<body>
+    <h2>Video Converter</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="original_video" required>
+        
+        <label for="video_format">Select Format:</label>
+        <select name="video_format" id="video_format">
+            <option value="mp4">MP4</option>
+            <option value="avi">AVI</option>
+            <option value="mkv">MKV</option>
+            <option value="mov">MOV</option>
+            <option value="gif">GIF</option>
+            <option value="webm">WEBM</option>
+            <option value="wmv">WMV</option>
+            <option value="3g2">3G2</option>
+            <option value="3gp">3GP</option>
+            <option value="flv">FLV</option>
+            <option value="mpg">MPG</option>
+            <option value="ogv">OGV</option>
+            <!-- Add more format options as needed -->
+        </select>
+        
+        <button type="submit">Convert Video</button>
+    </form>
+</body>
+</html>

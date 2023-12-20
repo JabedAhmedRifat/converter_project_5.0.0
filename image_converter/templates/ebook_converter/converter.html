@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ebook Converter</title>
+</head>
+<body>
+    <h2>Ebook Converter</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="original_ebook" required>
+        
+        <label for="original_format">Select Original Format:</label>
+        <select name="original_format" id="original_format">
+            <option value="epub">EPUB</option>
+            <!-- Add more format options as needed -->
+        </select>
+        
+        <label for="ebook_format">Select Target Format:</label>
+        <select name="ebook_format" id="ebook_format">
+            <option value="pdf">PDF</option>
+            <option value="mobi">MOBI</option>
+            <!-- Add more format options as needed -->
+        </select>
+        
+        <button type="submit">Convert Ebook</button>
+    </form>
+</body>
+</html>

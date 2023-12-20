@@ -2,43 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Converter</title>
 </head>
 <body>
+
     <h2>Image Converter</h2>
+
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
+
+        <label for="original_image">Choose an image file:</label>
         <input type="file" name="original_image" accept="image/*" required>
-        
-        <label for="image_format">Select Format:</label>
-        <select name="image_format" id="image_format">
+
+        <br>
+
+        <label for="image_format">Choose the target image format:</label>
+        <select name="image_format" required>
             <option value="bmp">BMP</option>
             <option value="eps">EPS</option>
             <option value="gif">GIF</option>
             <option value="ico">ICO</option>
-            <option value="jpg">JPG</option>
+            <option value="JPEG">JPEG</option>
             <option value="png">PNG</option>
-            <option value="svg">SVG</option>
-            <option value="tga">TGA</option>
             <option value="tiff">TIFF</option>
-            <option value="wbmp">WBMP</option>
-            <option value="webp">WEBP</option>
+            <option value="webp">WebP</option>
+            <option value="xbm">XBM</option>
+            <option value="xpm">XPM</option>
+            <!-- Add more options as needed -->
+
         </select>
-        
-        <button type="submit">Convert Image</button>
+
+        <br>
+
+        <input type="submit" value="Convert">
     </form>
 
-    <h3>Conversion History</h3>
-    <ul>
-        {% for conversion in conversions %}
-            <li>
-                {{ conversion }} - {% if conversion.conversion_status %}Converted{% else %}Pending{% endif %}
-                {% if conversion.converted_image %}
-                    <a href="{{ conversion.converted_image.url }}" target="_blank">View</a> |
-                    <a href="{% url 'download_image' conversion.id %}" download>Download</a>
-                {% endif %}
-            </li>
-        {% endfor %}
-    </ul>
 </body>
 </html>
