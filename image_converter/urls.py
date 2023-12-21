@@ -19,6 +19,10 @@ from .ebook_converter_views import *
 
 from .video_converter_views import *
 
+from .webservice_converter_views import *
+
+from .device_converter_views import *
+
 urlpatterns = [
     path('image-converter/', image_converter, name='image_converter'),
     path('result-page/', image_result_page, name='image_result_page'),
@@ -57,6 +61,13 @@ urlpatterns = [
     
     path('video-converter/', video_converter, name='video_converter'),
     path('video_result-page/', video_result_page, name='video_result_page'),
+    
+    
+    path('webservice-converter/', webservice_converter, name='webservice_converter'),
+    path('webservice_result-page/', webservice_result_page, name='webservice_result_page'),
+    
+    path('device-converter/', device_converter, name='device_converter'),
+    path('device_result-page/', device_result_page, name='device_result_page'),
     
 ]
 

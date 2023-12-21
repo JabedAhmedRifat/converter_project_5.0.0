@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Webservice Converter</title>
+</head>
+<body>
+    <h2>Webservice Converter</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="original_video" required>
+        
+        <label for="video_format">Select Format:</label>
+        <select name="video_format" id="video_format">
+            <option value="mp4">Daily Motion</option>
+            <option value="mp4">FacBook</option>
+            <option value="mp4">Instagram</option>
+            <option value="mp4">Telegram</option>
+            <option value="mp4">Twitch</option>
+            <option value="mp4">Twitter</option>
+            <option value="mp4">Viber</option>
+            <option value="mp4">Vimeo</option>
+            <option value="mp4">Whatsapp</option>
+            <option value="mp4">YouTube</option>
+            <!-- Add more format options as needed -->
+        </select>
+        
+        <button type="submit">Convert Video</button>
+    </form>
+</body>
+</html>
